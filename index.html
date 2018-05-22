@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>kr33</title>
+    <script src="script.js"></script>
+    <script src="my_table.js"></script>
+<!--    <script src="generator.js"></script>-->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>kr33</h1>
+        <textarea id="input" cols="50" rows="5" onkeyup="refresh()"></textarea>
+        <p><strong>crypted:</strong></p>
+        <p id="crypted"></p>
+        <hr>
+        <p><strong>decrypted:</strong></p>
+        <p id="decrypted"></p>
+    <!--    <p id="generator"></p>-->
+    </div>
+</body>
+
+</html>
+
+<script>
+//    generator();
+    
+    function refresh() 
+    {
+        var input = document.getElementById("input").value.toLowerCase();
+        
+        crypted = crypting(input, my_table);
+        decrypted = decrypting(crypted, my_table);
+
+        document.getElementById("crypted").innerHTML = crypted;
+        document.getElementById("decrypted").innerHTML = decrypted;
+    }
+
+</script>
