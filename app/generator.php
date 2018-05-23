@@ -9,6 +9,10 @@ $first = random_int(1, 9999);
 $second = random_int(1, 9999);
 $salt = $first * $second;
 
+if ( $seed ) {
+    $salt = $seed;
+}
+
 foreach ( $alphabet as $letter )
 {
     $table .= '"'.$letter.'": "'.hash('adler32', $letter.$salt).'", ';

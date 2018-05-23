@@ -1,6 +1,8 @@
 RewriteEngine On
+ErrorDocument 404 /index.php?page=404
 
 #
 
 RewriteRule    ^$ index.php?page=index
 RewriteRule    ^gen$ index.php?page=gen
+RewriteRule    ^gen_([0-9]+)+$ index.php?page=gen&seed=$1

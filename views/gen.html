@@ -7,7 +7,7 @@
 </head>
 <body>
     <div id="app">
-        <h1>kr33 / gen</h1>
+        <h1>kr33 / gen <?php if (seed) {echo "/";} ?> <?php echo $seed; ?></h1>
         <textarea onClick="this.select();"><?php echo $table ?></textarea>
     </div>
 </body>
