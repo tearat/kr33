@@ -12,25 +12,20 @@ span {
     font-size: 24px;
     display: inline-block;
     margin: 0;
-/*    padding: 0 0 5px 0;*/
     font-weight: 300;
     color: orangered;
-/*    user-select: none;*/
-    margin-bottom: 25px;
+    margin-bottom: 5px;
 }
 
 input {
     display: inline-block;
     border: none;
-/*    border-bottom: 1px solid orangered;*/
     background-color: black;
     color: orangered;
-/*    color: #eee;*/
     font-size: 24px;
     padding: 5px;
     width: 200px;
     width: auto;
-/*    width: calc(100% - 20px);*/
     margin-bottom: 10px;
 }
 
@@ -38,7 +33,6 @@ input {
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
-
 
 textarea {
     display: inline-block;
@@ -55,16 +49,6 @@ input:focus, textarea:focus {
     outline: none;
     background-color: rgba(255,255,255,0.05);
 }
-
-/*
-.p404 {
-    width: 100px;
-    margin: 0 auto;
-    margin-top: 50vh;
-    color: orangered;
-    text-align: center;
-}
-*/
 
 button {
     background-color: transparent;
