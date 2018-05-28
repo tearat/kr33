@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>kr33</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-sha256/0.9.0/sha256.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div id="index">
+            <span>kr33: <input type="text" v-on:keyup="generate()" v-model="seed"></span>
+            <div class="grid">
+                <textarea v-model="left" v-on:keyup.ctrl.enter="crypt()" v-on:keyup.ctrl.shift.enter="decrypt()"></textarea>
+                <textarea v-model="right" onclick="this.select()"></textarea>
+            </div>
+            <button v-on:click="crypt()">E</button>
+            <button v-on:click="decrypt()">D</button>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script src="index.vue.min.js"></script>
