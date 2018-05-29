@@ -3,11 +3,20 @@ var app = new Vue({
     data: {
         left: "",
         right: "",
+        temp: "",
         table: {},
         seed: "1",
-        table_string: ""
+        help: false
     },
     methods: {
+        swap: function () {
+            this.temp = this.left;
+            this.left = this.right;
+            this.right = this.temp;
+        },
+        toggle_help: function () {
+            this.help = this.help ? false : true;
+        },
         crypt: function () {
             this.right = this.crypting(this.left.toLowerCase(), this.table);
         },
@@ -25,7 +34,7 @@ var app = new Vue({
                     }
                 }
                 if (done == false) {
-                    crypted += "########";
+                    crypted += "••••••••";
                 }
             }
             return crypted;
@@ -52,17 +61,16 @@ var app = new Vue({
         },
         generate: function () {
             table_string = "{";
-            var alphabet = ["а", "б", "в", "г", "д", "е", "ё", "ж", "з", "и", "й", "к", "л", "м", "н", "о", "п", "р", "с", "т", "у", "ф", "х", "ц", "ч", "ш", "щ", "ъ", "ы", "ь", "э", "ю", "я", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "!", "?", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", " ", ".", ",", "(", ")", "{", "}", "&quot;", ":", ";", "_", "+", "-", "=", "*", "/", "<", ">", "[", "]", "@", "#", "$", "%", "^", "&", "№", "`", "~"];
+            var alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZабвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ1234567890!№;%:?*()@#$%^&/|+-=_.,<>{}[]`~ ";
             var salt = this.seed;
-            alphabet.forEach(function (letter, key, alphabet) {
-                table_string += '"' + letter + '": "' + sha256(letter + salt).substr(0, 8) + '", ';
-            });
+            for (i=0; i<alphabet.length; i++) {
+                table_string += '"' + alphabet[i] + '": "' + sha256(alphabet[i] + salt).substr(0, 8) + '", ';
+            }
             table_string = table_string.replace(/,\s*$/, "");
             table_string = table_string.replace('"\"', '"\\\"');
             table_string = table_string.replace('"""', '"\""');
             table_string += "}";
             this.table = JSON.parse(table_string);
-            this.right = "";
         }
     },
     mounted: function () {
